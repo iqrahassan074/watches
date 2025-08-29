@@ -1,0 +1,1107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LUXE | Premium Timepieces</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Allison&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+        :root {
+            --dark-blue: #0A1D3C;
+            --light-gray: #f0eeee;
+            --white: #f8f4f4;
+            /* --light-peach: #F9E3BC; */
+            --light-peach: #ece9c8;
+            --dark-gray: #3E3F43;
+            --light-black: #1D1D1D;
+        }
+        
+        /* Loading Animation */
+        .loading-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: var(--dark-blue);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            transition: opacity 0.5s ease, visibility 0.5s ease;
+        }
+
+        .loading-overlay.hidden {
+            opacity: 0;
+            visibility: hidden;
+        }
+
+        .watch-loader {
+            width: 100px;
+            height: 100px;
+            border: 4px solid rgba(255, 255, 255, 0.2);
+            border-top: 4px solid var(--light-peach);
+            border-radius: 50%;
+            animation: spin 1.5s linear infinite;
+            position: relative;
+        }
+
+        .watch-loader::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 60%;
+            height: 60%;
+            border: 2px solid var(--light-peach);
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* Section 1 */
+        .section {
+            min-height: 100vh;
+            width: 100%;
+        }
+        
+        nav {
+            width: 100%;
+            height: 13vh;
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+            margin: auto;
+            position: fixed;
+            top: 0;
+            background-color: rgba(255, 255, 255, 0.95);
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        header {
+            width: 80%;
+            height: calc(100vh - 13vh);
+            display: flex;
+            align-items: center;
+            justify-content: space-evenly;
+            margin: auto;
+            padding-top: 13vh;
+        }
+        
+        .navlinks {
+            display: flex;
+        }
+        
+        .header-image {
+            width: 20rem;
+            height: 45rem;
+            object-fit: cover;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+        
+        .logo {
+            font-size: 3.3rem;
+            color: var(--dark-blue);
+            font-family: 'Allison', cursive;
+        }
+        
+        .navlinks li {
+            list-style: none;
+        }
+        
+        .navlinks li a {
+            text-decoration: none;
+            margin-left: 2.5rem;
+            color: var(--dark-gray);
+            font-size: 1rem;
+            letter-spacing: .03rem;
+            position: relative;
+        }
+        
+        .header-heading {
+            font-size: 3rem;
+            position: relative;
+            color: var(--light-black);
+        }
+        
+        .header-heading::before {
+            content: "New";
+            position: absolute;
+            top: -60px;
+            color: var(--dark-blue);
+            font-family: 'Allison', cursive;
+            font-size: 3.5rem;
+        }
+        
+        .product-name {
+            font-size: 1.7rem;
+            color: var(--dark-gray);
+            margin: 1rem 0;
+        }
+        
+        .header-pricing {
+            font-size: 1.5rem;
+            margin: 1rem 0;
+            color: var(--dark-blue);
+            font-weight: 600;
+        }
+        
+        .primary-btn, .secondary-btn {
+            font-size: 1.1rem;
+            border: none;
+            padding: 1rem 1.7rem;
+            transition: transform .5s ease-in-out;
+            cursor: pointer;
+            border-radius: 5px;
+            margin-right: 1rem;
+        }
+        
+        .primary-btn {
+            background: var(--light-gray);
+            color: var(--dark-blue);
+        }
+        
+        .secondary-btn {
+            background: var(--dark-blue);
+            color: var(--white);
+            transform: scale(1.1);
+        }
+        
+        .primary-btn:hover {
+            transform: scale(1.1);
+            background-color: var(--dark-blue);
+            color: var(--white);
+        }
+        
+        .secondary-btn:hover {
+            transform: scale(1);
+            background-color: var(--light-gray);
+            color: var(--dark-blue);
+        }
+        
+        .navlinks li a::after {
+            content: "";
+            background: var(--dark-gray);
+            position: absolute;
+            height: .15rem;
+            width: 100%;
+            left: 0;
+            bottom: -5px;
+            transform: scaleX(0);
+            transition: transform .5s ease-in-out;
+            transform-origin: right;
+        }
+        
+        .navlinks li a:hover::after {
+            transform: scale(1);
+            transform-origin: left;
+        }
+        
+        .line {
+            background-color: var(--dark-gray);
+            width: 2.5rem;
+            height: .2rem;
+            margin: .38rem;
+        }
+        
+        .hamburger {
+            cursor: pointer;
+            display: none;
+        }
+        
+
+        
+        /* Section 2 */
+        .section-two {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 4rem 0;
+        }
+        
+        .section-two-container {
+            background: var(--light-peach);
+            /* width: 100%;
+            height: 65vh; */
+            transform: skewY(-6deg);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .section-two-image {
+            width: 28rem;
+            height: auto;
+            object-fit: cover;
+            
+        }
+        
+          .section-two-inner-container {
+            transform: skewY(6deg);
+            width: 80%;
+            margin: auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        } 
+  
+
+        .section-two-content {
+            max-width: 50%;
+        }
+        
+        .section-two-heading {
+            color: var(--dark-gray);
+            font-size: 4rem;
+            margin-bottom: 1rem;
+        }
+        
+        .section-two-para {
+            font-size: 1rem;
+            color: var(--dark-gray);
+            line-height: 1.8rem;
+            max-width: 80%;
+            margin-bottom: 1.5rem;
+        }
+        
+        .section-two-btn {
+            font-size: 1rem;
+            border: none;
+            background: var(--dark-blue);
+            color: var(--white);
+            padding: 1rem 2rem;
+            margin-top: 1rem;
+            transition: transform .5s ease-in-out;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        
+        .section-two-btn:hover {
+            transform: scale(1.1);
+            background-color: var(--light-gray);
+            color: var(--dark-blue);
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+        /* Section 3 */
+        .section-three {
+            padding: 4rem 0;
+            background-color: var(--light-gray);
+        }
+        
+        .section-heading {
+            font-size: 2rem;
+            text-align: center;
+            color: var(--light-black);
+            margin-bottom: 2rem;
+            font-family: 'Allison', cursive;
+        }
+        
+        .card-container {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap; 
+            gap: 1rem; 
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .card {
+            width: 20rem;
+            height: 24rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            box-shadow: .1rem .1rem 1rem rgba(0, 0, 0, 0.15);
+            padding: 1rem;
+            margin: 1rem;
+            background-color: var(--white);
+            border-radius: 10px;
+            transition: transform 0.3s ease;
+        }
+        
+        .card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .card-image {
+            width: 100%;
+            max-width: 10rem;
+            height: auto;
+            margin-bottom: 1.5rem;
+            object-fit: contain;
+        }
+        
+        .card-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--dark-blue);
+            margin-bottom: 0.5rem;
+        }
+        
+        .card-price {
+            font-size: 1.1rem;
+            color: var(--dark-gray);
+            margin-bottom: 1rem;
+        }
+        
+        .card-btn {
+            background: var(--dark-blue);
+            color: var(--white);
+            border: none;
+            padding: 0.7rem 1.5rem;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .card-btn:hover {
+            background: var(--light-peach);
+            color: var(--dark-blue);
+        }
+        
+        /* Section 4 */
+        .section-four {
+            padding: 4rem 0;
+        }
+        
+        .section-four-container {
+            background: url('images/special-offers-bg.jpg') center center/cover no-repeat;
+            width: 100%;
+            height: 65vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-attachment: fixed;
+            position: relative;
+        }
+        
+        .section-four-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(10, 29, 60, 0.7);
+        }
+        
+        .section-four-content {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+            max-width: 800px;
+            padding: 0 2rem;
+        }
+        
+        .section-four-offer {
+            color: var(--light-peach);
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+        
+        .section-four-heading {
+            color: var(--white);
+            font-size: 2rem;
+            margin-bottom: 2rem;
+        }
+        
+        .offers-timer {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-bottom: 2rem;
+        }
+        
+        .timer-box {
+            background-color: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(5px);
+            border-radius: 10px;
+            padding: 15px;
+            min-width: 80px;
+        }
+        
+        .timer-value {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--light-peach);
+        }
+        
+        .timer-label {
+            font-size: 0.9rem;
+            color: var(--white);
+        }
+        
+        .section-four-btn {
+            font-size: 1rem;
+            border: none;
+            background: var(--light-peach);
+            color: var(--dark-blue);
+            padding: 1rem 2rem;
+            margin-top: 1rem;
+            transition: transform .5s ease-in-out;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: 600;
+        }
+        
+        .section-four-btn:hover {
+            transform: scale(1.1);
+            background-color: var(--dark-blue);
+            color: var(--white);
+        }
+        
+        /* Section 5 */
+        .section-five {
+            padding: 4rem 0;
+            background-color: var(--light-gray);
+        }
+        
+        .grid-card-container {
+            width: 80%;
+            height: 80vh;
+            margin: auto;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            grid-template-rows: repeat(2, 1fr);
+            gap: 1.2rem;
+            grid-auto-rows: 15rem;
+        }
+        
+        .grid-card {
+            background: var(--light-gray);
+            position: relative; 
+            background-position: center;
+            background-size: cover;
+            background-repeat: no-repeat;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+        
+        .grid-card:nth-child(1) {
+            grid-row: 1 / 4;
+            background-image: url("images/man.jpg");
+        }
+        
+        .grid-card:nth-child(2){
+            background-image: url("images/woman.jpg");
+        }
+        
+        .grid-card:nth-child(3) {
+            grid-row: 1 / 3;
+            background-image: url("images/sportss.jpg");
+        }
+        
+        .grid-card:nth-child(4) {
+            grid-row: 4 / 3;
+            background-image: url("images/smart.jpg");
+        }
+        
+        .grid-card:nth-child(5){
+            background-image: url("images/limited.jpg");
+        }
+        
+        .grid-card:nth-child(6){
+            background-image: url("images/vintage.jpg");
+        }
+        
+        .grid-card::before {
+            content: "";
+            position: absolute;
+            background: rgba(0, 0, 0, 0.544);
+            inset: 0;
+            transform: scaleX(0);
+            transform-origin: right;
+            transition: transform 1s ease-in-out;
+        }
+        
+        .grid-card:hover::before{
+            transform: scaleX(1);
+            transform-origin: left;
+        }
+        
+        .grid-card::after {
+            content: attr(collection);
+            position: absolute;
+            text-transform: uppercase;
+            background: var(--light-peach);
+            color: var(--dark-blue);
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            padding: 1rem 1.7rem;
+            font-size: 1.1rem;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 1s ease-in-out;
+            font-weight: 600;
+            border-radius: 5px;
+        }
+        
+        .grid-card:hover::after{
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        /* Footer */
+        footer{
+            background: var(--light-black);
+            height: 20vh;
+            width: 100%;
+            margin-top: 5rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .footer-txt{
+            color: white;
+            font-size: 1.5rem;
+            text-align: center;
+        }
+        
+        /* Cart Preview */
+        .cart-preview {
+            position: fixed;
+            top: 0;
+            right: -400px;
+            width: 400px;
+            height: 100vh;
+            background-color: var(--white);
+            box-shadow: -5px 0 15px rgba(0, 0, 0, 0.3);
+            z-index: 1001;
+            transition: right 0.3s ease;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .cart-preview.active {
+            right: 0;
+        }
+
+        .cart-header {
+            padding: 20px;
+            background-color: var(--dark-blue);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .cart-header h2 {
+            font-size: 1.5rem;
+            color: var(--white);
+        }
+
+        .close-cart {
+            background: none;
+            border: none;
+            color: var(--white);
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        .cart-items {
+            flex: 1;
+            overflow-y: auto;
+            padding: 20px;
+        }
+
+        .cart-item {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 20px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid var(--light-gray);
+        }
+
+        .cart-item-image {
+            width: 80px;
+            height: 80px;
+            object-fit: cover;
+            border-radius: 5px;
+        }
+
+        .cart-item-details {
+            flex: 1;
+        }
+
+        .cart-item-title {
+            font-weight: 600;
+            margin-bottom: 5px;
+            color: var(--dark-gray);
+        }
+
+        .cart-item-price {
+            color: var(--dark-blue);
+            font-weight: 600;
+        }
+
+        .cart-item-quantity {
+            display: flex;
+            align-items: center;
+            margin-top: 10px;
+        }
+
+        .quantity-btn {
+            width: 25px;
+            height: 25px;
+            border-radius: 50%;
+            background-color: var(--light-gray);
+            border: none;
+            color: var(--dark-gray);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+        }
+
+        .quantity-value {
+            margin: 0 10px;
+            color: var(--dark-gray);
+        }
+
+        .cart-summary {
+            padding: 20px;
+            background-color: var(--light-gray);
+        }
+
+        .cart-total {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 20px;
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--dark-gray);
+        }
+
+        .checkout-btn {
+            width: 100%;
+            padding: 15px;
+            background: var(--dark-blue);
+            color: var(--white);
+            border: none;
+            border-radius: 5px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .checkout-btn:hover {
+            background: var(--light-peach);
+            color: var(--dark-blue);
+        }
+
+        .empty-cart {
+            text-align: center;
+            padding: 40px 20px;
+            color: var(--dark-gray);
+        }
+
+        .empty-cart i {
+            font-size: 3rem;
+            margin-bottom: 15px;
+            color: var(--light-gray);
+        }
+
+        /* Responsive Styles */
+        @media screen and (max-width: 500px){
+            /* Section 1 */
+            .header-image{
+                display: none;
+            }
+            .navlinks{
+               flex-direction: column;
+               position: absolute;
+               top:0;
+               background-color: var(--light-gray);
+               width: 100%;
+               height: 100%;
+               justify-content: center;
+               align-items: center;
+               right: 100%;
+               z-index: 2;
+               gap: 2rem;
+               transition: 2s ease ease-in-out;
+            }
+            .navlinks-active{
+                right: 0;
+            }
+            .navlinks li a{
+                font-size: 1.3rem;
+                margin-left: 0;
+            }
+            .hamburger{
+                display: block;
+                z-index: 5;
+            }
+            .section .logo{
+                z-index: 5;
+            }
+            .header-heading{
+                font-size: 4rem;
+            }
+            header{
+                justify-content: flex-start;
+            }
+            /* Section 2 */
+            .section-two-image{
+                display: none;
+            }
+            .section-two-heading{
+                font-size: 2.9rem;
+            }
+            .section-two-para{
+                font-size: .93rem;
+                max-width: 100%;
+            }
+            .section-two-pricing{
+                font-size: 1.4rem;
+            }
+            .section-two-btn{
+                font-size: 1rem;
+                padding: .7rem 1rem;
+            }
+            .section-two-container{
+                height: 60vh;
+            }
+            .section-two-inner-container{
+                width: 90%;
+            }
+            /* Section 3 */
+            .card {
+                width: 100%;
+                height: auto;
+            }
+            .card-image {
+                width: 100%;
+                height: auto;
+            }
+            /* Section 4 */
+            .section-four-heading{
+                font-size: 2.8rem;
+            }
+            .section-four-offer{
+                font-size: 3.3rem;
+            }
+            .section-four-btn{
+                font-size: 1rem;
+            }
+            /* Section 5 */
+            .grid-card-container{
+                grid-template-columns: repeat(2, 1fr);
+                grid-template-rows: repeat(3, 1fr);
+            }
+            .grid-card:nth-child(1), .grid-card:nth-child(3){
+                grid-row: 1/2;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .card-container {
+                flex-direction: column;
+                align-items: center;
+            }
+            .card {
+                width: 90%;
+                margin: 1rem 0;
+            }
+            .grid-card-container {
+                width: 90%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Loading Animation -->
+    <div class="loading-overlay" id="loadingOverlay">
+        <div class="watch-loader"></div>
+    </div>
+
+    <!-- Section 1: Hero and Navigation -->
+    <section class="section">
+        <nav>
+            <div class="logo">LUXE</div>
+            <ul class="navlinks" id="navLinks">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#products">Collections</a></li>
+                <li><a href="#new-arrivals">New Arrivals</a></li>
+                <li><a href="#special-offers">Special Offers</a></li>
+                <li><a href="#collection">Shop</a></li>
+            </ul>
+            <div class="hamburger" id="hamburger">
+                <div class="line"></div>
+                <div class="line"></div>
+                <div class="line"></div>
+            </div>
+        </nav>
+        
+        <header>
+            <div>
+                <h1 class="header-heading">Timeless Elegance</h1>
+                <p class="product-name">Rolex Submariner</p>
+                <p class="header-pricing">$8,500</p>
+                <div>
+                    <button class="primary-btn">Add to Cart</button>
+                    <button class="secondary-btn">View Details</button>
+                </div>
+            </div>
+            <img src="images/watch.jpg" alt="Luxury Watch" class="header-image">
+        </header>
+    </section>
+
+    <!-- Section 2: Brand Showcase -->
+    <section class="section-two">
+        <div class="section-two-container">
+            <div class="section-two-inner-container">
+                <div class="section-two-content">
+                    <h2 class="section-two-heading">Craftsmanship</h2>
+                    <p class="section-two-para">Each timepiece in our collection is a masterpiece of craftsmanship and design, meticulously crafted by skilled artisans with decades of experience.</p>
+                    <button class="section-two-btn">Explore More</button>
+                </div>
+                <img src="images/product watch.png" alt="Craftsmanship" class="section-two-image">
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 3: Product Cards -->
+    <section class="section-three" id="products">
+        <h2 class="section-heading">Premium Collection</h2>
+        <div class="card-container">
+            <!-- Rolex -->
+            <div class="card">
+                <img src="images/rolex.jpg" alt="Rolex" class="card-image">
+                <h3 class="card-title">Rolex Submariner</h3>
+                <p class="card-price">$8,500</p>
+                <button class="card-btn">Add to Cart</button>
+            </div>
+            
+            <!-- Omega -->
+            <div class="card">
+                <img src="images/omega.jpg" alt="Omega" class="card-image">
+                <h3 class="card-title">Omega Speedmaster</h3>
+                <p class="card-price">$6,200</p>
+                <button class="card-btn">Add to Cart</button>
+            </div>
+            
+            <!-- Cartier -->
+            <div class="card">
+                <img src="images/c.jpg" alt="Cartier" class="card-image">
+                <h3 class="card-title">Cartier Tank</h3>
+                <p class="card-price">$5,900</p>
+                <button class="card-btn">Add to Cart</button>
+            </div>
+            
+            <!-- Patek Philippe -->
+            <div class="card">
+                <img src="images/patek-philippe.jpg" alt="Patek Philippe" class="card-image">
+                <h3 class="card-title">Patek Philippe Nautilus</h3>
+                <p class="card-price">$32,500</p>
+                <button class="card-btn">Add to Cart</button>
+            </div>
+            
+            <!-- Audemars Piguet -->
+            <div class="card">
+                <img src="images/audemars-piguet.jpg" alt="Audemars Piguet" class="card-image">
+                <h3 class="card-title">Audemars Piguet Royal Oak</h3>
+                <p class="card-price">$24,000</p>
+                <button class="card-btn">Add to Cart</button>
+            </div>
+            
+            <!-- Tag Heuer -->
+            <div class="card">
+                <img src="images/tag-heuer.jpg" alt="Tag Heuer" class="card-image">
+                <h3 class="card-title">Tag Heuer Carrera</h3>
+                <p class="card-price">$3,800</p>
+                <button class="card-btn">Add to Cart</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 4: Special Offers -->
+    <section class="section-four" id="special-offers">
+        <div class="section-four-container">
+            <div class="section-four-content">
+                <h2 class="section-four-offer">Limited Time Offer</h2>
+                <h3 class="section-four-heading">Exclusive Collection at Exceptional Prices</h3>
+                <div class="offers-timer">
+                    <div class="timer-box">
+                        <div class="timer-value" id="days">12</div>
+                        <div class="timer-label">Days</div>
+                    </div>
+                    <div class="timer-box">
+                        <div class="timer-value" id="hours">08</div>
+                        <div class="timer-label">Hours</div>
+                    </div>
+                    <div class="timer-box">
+                        <div class="timer-value" id="minutes">34</div>
+                        <div class="timer-label">Minutes</div>
+                    </div>
+                    <div class="timer-box">
+                        <div class="timer-value" id="seconds">56</div>
+                        <div class="timer-label">Seconds</div>
+                    </div>
+                </div>
+                <button class="section-four-btn">Shop Now</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 5: Collections Grid -->
+    <section class="section-five" id="collection">
+        <h2 class="section-heading">Our Collections</h2>
+        <div class="grid-card-container">
+            <div class="grid-card" collection="Men's Collection"></div>
+            <div class="grid-card" collection="Women's Collection"></div>
+            <div class="grid-card" collection="Sport Watches"></div>
+            <div class="grid-card" collection="Smart Watches"></div>
+            <div class="grid-card" collection="Limited Edition"></div>
+            <div class="grid-card" collection="Vintage"></div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p class="footer-txt">&copy; 2023 LUXE. All rights reserved.</p>
+    </footer>
+
+    <!-- Cart Preview -->
+    <div class="cart-preview" id="cartPreview">
+        <div class="cart-header">
+            <h2>Your Cart</h2>
+            <button class="close-cart" onclick="toggleCart()">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <div class="cart-items">
+            <div class="empty-cart">
+                <i class="fas fa-shopping-cart"></i>
+                <p>Your cart is empty</p>
+            </div>
+        </div>
+        <div class="cart-summary">
+            <div class="cart-total">
+                <span>Total:</span>
+                <span id="cartTotal">$0.00</span>
+            </div>
+            <button class="checkout-btn">Proceed to Checkout</button>
+        </div>
+    </div>
+
+    <script>
+        // Loading Animation
+        window.addEventListener('load', function() {
+            setTimeout(function() {
+                document.getElementById('loadingOverlay').classList.add('hidden');
+            }, 1500);
+        });
+
+        // Mobile menu toggle
+        const hamburger = document.getElementById('hamburger');
+        const navLinks = document.getElementById('navLinks');
+        
+        hamburger.addEventListener('click', function() {
+            navLinks.classList.toggle('navlinks-active');
+        });
+
+        // Close mobile menu when clicking on a link
+        document.querySelectorAll('.navlinks a').forEach(link => {
+            link.addEventListener('click', function() {
+                navLinks.classList.remove('navlinks-active');
+            });
+        });
+
+        // Countdown timer
+        function updateCountdown() {
+            const days = document.getElementById('days');
+            const hours = document.getElementById('hours');
+            const minutes = document.getElementById('minutes');
+            const seconds = document.getElementById('seconds');
+            
+            // Set target date (7 days from now)
+            const targetDate = new Date();
+            targetDate.setDate(targetDate.getDate() + 7);
+            
+            // Update countdown every second
+            setInterval(function() {
+                const now = new Date();
+                const difference = targetDate - now;
+                
+                const daysLeft = Math.floor(difference / (1000 * 60 * 60 * 24));
+                const hoursLeft = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutesLeft = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
+                const secondsLeft = Math.floor((difference % (1000 * 60)) / 1000);
+                
+                days.textContent = daysLeft.toString().padStart(2, '0');
+                hours.textContent = hoursLeft.toString().padStart(2, '0');
+                minutes.textContent = minutesLeft.toString().padStart(2, '0');
+                seconds.textContent = secondsLeft.toString().padStart(2, '0');
+            }, 1000);
+        }
+        
+        updateCountdown();
+
+        // Cart functionality
+        function toggleCart() {
+            const cartPreview = document.getElementById('cartPreview');
+            cartPreview.classList.toggle('active');
+        }
+
+        // Smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    window.scrollTo({
+                        top: target.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
