@@ -17,13 +17,13 @@
             --dark-blue: #0A1D3C;
             --light-gray: #f0eeee;
             --white: #f8f4f4;
-            /* --light-peach: #F9E3BC; */
+          
             --light-peach: #ece9c8;
             --dark-gray: #3E3F43;
             --light-black: #1D1D1D;
         }
         
-        /* Loading Animation */
+        
         .loading-overlay {
             position: fixed;
             top: 0;
@@ -70,7 +70,7 @@
             100% { transform: rotate(360deg); }
         }
 
-        /* Section 1 */
+       
         .section {
             min-height: 100vh;
             width: 100%;
@@ -223,8 +223,6 @@
         }
         
 
-        
-        /* Section 2 */
         .section-two {
             display: flex;
             align-items: center;
@@ -234,8 +232,6 @@
         
         .section-two-container {
             background: var(--light-peach);
-            /* width: 100%;
-            height: 65vh; */
             transform: skewY(-6deg);
             display: flex;
             justify-content: center;
@@ -295,36 +291,6 @@
             color: var(--dark-blue);
         }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        
-        /* Section 3 */
         .section-three {
             padding: 4rem 0;
             background-color: var(--light-gray);
@@ -402,7 +368,7 @@
             color: var(--dark-blue);
         }
         
-        /* Section 4 */
+       
         .section-four {
             padding: 4rem 0;
         }
@@ -493,7 +459,7 @@
             color: var(--white);
         }
         
-        /* Section 5 */
+       
         .section-five {
             padding: 4rem 0;
             background-color: var(--light-gray);
@@ -584,8 +550,7 @@
             opacity: 1;
             visibility: visible;
         }
-        
-        /* Footer */
+       
         footer{
             background: var(--light-black);
             height: 20vh;
@@ -602,7 +567,6 @@
             text-align: center;
         }
         
-        /* Cart Preview */
         .cart-preview {
             position: fixed;
             top: 0;
@@ -745,9 +709,9 @@
             color: var(--light-gray);
         }
 
-        /* Responsive Styles */
+       
         @media screen and (max-width: 500px){
-            /* Section 1 */
+           
             .header-image{
                 display: none;
             }
@@ -785,7 +749,6 @@
             header{
                 justify-content: flex-start;
             }
-            /* Section 2 */
             .section-two-image{
                 display: none;
             }
@@ -809,7 +772,7 @@
             .section-two-inner-container{
                 width: 90%;
             }
-            /* Section 3 */
+           
             .card {
                 width: 100%;
                 height: auto;
@@ -818,7 +781,7 @@
                 width: 100%;
                 height: auto;
             }
-            /* Section 4 */
+         
             .section-four-heading{
                 font-size: 2.8rem;
             }
@@ -828,7 +791,7 @@
             .section-four-btn{
                 font-size: 1rem;
             }
-            /* Section 5 */
+            
             .grid-card-container{
                 grid-template-columns: repeat(2, 1fr);
                 grid-template-rows: repeat(3, 1fr);
@@ -854,12 +817,11 @@
     </style>
 </head>
 <body>
-    <!-- Loading Animation -->
+    
     <div class="loading-overlay" id="loadingOverlay">
         <div class="watch-loader"></div>
     </div>
 
-    <!-- Section 1: Hero and Navigation -->
     <section class="section">
         <nav>
             <div class="logo">LUXE</div>
@@ -891,7 +853,6 @@
         </header>
     </section>
 
-    <!-- Section 2: Brand Showcase -->
     <section class="section-two">
         <div class="section-two-container">
             <div class="section-two-inner-container">
@@ -905,11 +866,10 @@
         </div>
     </section>
 
-    <!-- Section 3: Product Cards -->
     <section class="section-three" id="products">
         <h2 class="section-heading">Premium Collection</h2>
         <div class="card-container">
-            <!-- Rolex -->
+           
             <div class="card">
                 <img src="images/rolex.jpg" alt="Rolex" class="card-image">
                 <h3 class="card-title">Rolex Submariner</h3>
@@ -917,7 +877,6 @@
                 <button class="card-btn">Add to Cart</button>
             </div>
             
-            <!-- Omega -->
             <div class="card">
                 <img src="images/omega.jpg" alt="Omega" class="card-image">
                 <h3 class="card-title">Omega Speedmaster</h3>
@@ -925,7 +884,7 @@
                 <button class="card-btn">Add to Cart</button>
             </div>
             
-            <!-- Cartier -->
+          
             <div class="card">
                 <img src="images/c.jpg" alt="Cartier" class="card-image">
                 <h3 class="card-title">Cartier Tank</h3>
@@ -933,15 +892,14 @@
                 <button class="card-btn">Add to Cart</button>
             </div>
             
-            <!-- Patek Philippe -->
+            
             <div class="card">
                 <img src="images/patek-philippe.jpg" alt="Patek Philippe" class="card-image">
                 <h3 class="card-title">Patek Philippe Nautilus</h3>
                 <p class="card-price">$32,500</p>
                 <button class="card-btn">Add to Cart</button>
             </div>
-            
-            <!-- Audemars Piguet -->
+           
             <div class="card">
                 <img src="images/audemars-piguet.jpg" alt="Audemars Piguet" class="card-image">
                 <h3 class="card-title">Audemars Piguet Royal Oak</h3>
@@ -949,7 +907,6 @@
                 <button class="card-btn">Add to Cart</button>
             </div>
             
-            <!-- Tag Heuer -->
             <div class="card">
                 <img src="images/tag-heuer.jpg" alt="Tag Heuer" class="card-image">
                 <h3 class="card-title">Tag Heuer Carrera</h3>
@@ -959,7 +916,7 @@
         </div>
     </section>
 
-    <!-- Section 4: Special Offers -->
+   
     <section class="section-four" id="special-offers">
         <div class="section-four-container">
             <div class="section-four-content">
@@ -988,7 +945,6 @@
         </div>
     </section>
 
-    <!-- Section 5: Collections Grid -->
     <section class="section-five" id="collection">
         <h2 class="section-heading">Our Collections</h2>
         <div class="grid-card-container">
@@ -1001,12 +957,11 @@
         </div>
     </section>
 
-    <!-- Footer -->
     <footer>
         <p class="footer-txt">&copy; 2023 LUXE. All rights reserved.</p>
     </footer>
 
-    <!-- Cart Preview -->
+ 
     <div class="cart-preview" id="cartPreview">
         <div class="cart-header">
             <h2>Your Cart</h2>
@@ -1030,14 +985,13 @@
     </div>
 
     <script>
-        // Loading Animation
+       
         window.addEventListener('load', function() {
             setTimeout(function() {
                 document.getElementById('loadingOverlay').classList.add('hidden');
             }, 1500);
         });
 
-        // Mobile menu toggle
         const hamburger = document.getElementById('hamburger');
         const navLinks = document.getElementById('navLinks');
         
@@ -1045,25 +999,22 @@
             navLinks.classList.toggle('navlinks-active');
         });
 
-        // Close mobile menu when clicking on a link
         document.querySelectorAll('.navlinks a').forEach(link => {
             link.addEventListener('click', function() {
                 navLinks.classList.remove('navlinks-active');
             });
         });
 
-        // Countdown timer
         function updateCountdown() {
             const days = document.getElementById('days');
             const hours = document.getElementById('hours');
             const minutes = document.getElementById('minutes');
             const seconds = document.getElementById('seconds');
             
-            // Set target date (7 days from now)
+          
             const targetDate = new Date();
             targetDate.setDate(targetDate.getDate() + 7);
-            
-            // Update countdown every second
+           
             setInterval(function() {
                 const now = new Date();
                 const difference = targetDate - now;
@@ -1082,13 +1033,13 @@
         
         updateCountdown();
 
-        // Cart functionality
+      
         function toggleCart() {
             const cartPreview = document.getElementById('cartPreview');
             cartPreview.classList.toggle('active');
         }
 
-        // Smooth scrolling
+     
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function(e) {
                 e.preventDefault();
@@ -1104,4 +1055,5 @@
         });
     </script>
 </body>
+
 </html>
